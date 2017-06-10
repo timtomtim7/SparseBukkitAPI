@@ -1,0 +1,4 @@
+name: SparseBukkitAPI
+version: 1.0
+author: Tom
+main: me.tom.sparse.bukkit.SparseAPIPlugin
