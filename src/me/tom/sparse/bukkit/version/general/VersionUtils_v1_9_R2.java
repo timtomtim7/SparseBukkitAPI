@@ -84,6 +84,7 @@ public class VersionUtils_v1_9_R2 implements VersionUtils
 					if(eBase != null)
 						base.add(eBase);
 				}
+				return base;
 			case 10: return (NBTTagCompound) compoundToNMSCompound((Compound)o);
 			case 11: return new NBTTagIntArray((int[])o);
 		}
