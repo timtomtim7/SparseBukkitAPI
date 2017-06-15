@@ -9,6 +9,7 @@ import org.bukkit.inventory.InventoryHolder;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public class Menu implements InventoryHolder
 {
@@ -25,6 +26,8 @@ public class Menu implements InventoryHolder
 	private final Inventory inventory;
 	
 	public boolean disablePlayerInventory = true;
+	
+	public Consumer<InventoryClickEvent> playerInventoryCallback;
 	
 	public Menu(String title, int height)
 	{
@@ -52,11 +55,28 @@ public class Menu implements InventoryHolder
 			int slot = e.getSlot();
 			if(slot != -1)
 			{
-				e.setCancelled(!slots[slot].onClick((Player) e.getWhoClicked(), e.getClick(), e.getAction()));
+				try{
+					e.setCancelled(!slots[slot].onClick((Player) e.getWhoClicked(), e.getClick(), e.getAction()));
+				}catch(Exception ex)
+				{
+					ex.printStackTrace();
+					e.setCancelled(true);
+				}
 			}
 		}else if(disablePlayerInventory)
 		{
 			e.setCancelled(true);
+		}else{
+			if(playerInventoryCallback != null)
+			{
+				try{
+					playerInventoryCallback.accept(e);
+				}catch(Exception ex)
+				{
+					ex.printStackTrace();
+					e.setCancelled(true);
+				}
+			}
 		}
 	}
 	
