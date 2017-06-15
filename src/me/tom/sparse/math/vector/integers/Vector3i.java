@@ -197,11 +197,11 @@ public class Vector3i
 		return set(Math.max(x(), x), Math.max(y(), y), Math.max(z(), z));
 	}
 	
-	public boolean withinMinMax(float minX, float minY, float minZ, float maxX, float maxY, float maxZ)
+	public boolean withinMinMax(int minX, int minY, int minZ, int maxX, int maxY, int maxZ)
 	{
-		float x = x();
-		float y = y();
-		float z = z();
+		int x = x();
+		int y = y();
+		int z = z();
 		return x >= minX && x <= maxX && y >= minY && y <= maxY && z >= minZ && z <= maxZ;
 	}
 

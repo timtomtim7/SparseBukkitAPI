@@ -35,7 +35,7 @@ public final class SpigotResourceVersionChecker
 	{
 		int[] a = tokenize(ourVersion);
 		int[] b = tokenize(latestVersion);
-		
+
 //		System.out.println();
 //		System.out.println();
 //		System.out.println();
@@ -54,6 +54,11 @@ public final class SpigotResourceVersionChecker
 				return true;
 			}
 		}
+		
+		if(b.length > a.length)
+			for(int i = a.length; i < b.length; i++)
+				if(b[i] > 0)
+					return false;
 		
 		return true;
 	}

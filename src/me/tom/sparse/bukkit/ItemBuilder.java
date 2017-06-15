@@ -113,7 +113,7 @@ public class ItemBuilder
 		this.amount = amount;
 		this.name = name;
 		this.lore = lore;
-		this.enchantments = new HashMap<>(enchantments);
+		this.enchantments = enchantments == null ? null : new HashMap<>(enchantments);
 		this.flags = flags;
 	}
 	
