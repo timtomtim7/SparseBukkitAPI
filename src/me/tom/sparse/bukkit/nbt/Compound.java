@@ -4,6 +4,7 @@ import me.tom.sparse.bukkit.SparseAPIPlugin;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
@@ -62,7 +63,7 @@ public class Compound implements Map<String, Object>
 		return read(new FileInputStream(file));
 	}
 	
-	private final Map<String, Object> backingMap = new HashMap<>();
+	private final Map<String, Object> backingMap = new ConcurrentHashMap<>();
 	
 	/**
 	 * Creates an empty Compound
