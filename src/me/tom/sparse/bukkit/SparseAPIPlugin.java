@@ -1,6 +1,7 @@
 package me.tom.sparse.bukkit;
 
 import me.tom.sparse.bukkit.menu.MenuManager;
+import me.tom.sparse.bukkit.persistent.PersistentDataManager;
 import me.tom.sparse.bukkit.version.general.VersionUtils;
 import me.tom.sparse.spigot.SpigotResourceVersionChecker;
 import org.bukkit.Bukkit;
@@ -72,10 +73,12 @@ public class SparseAPIPlugin extends JavaPlugin
 		}
 		AntiTimeout.init();
 		MenuManager.init();
+		PersistentDataManager.init();
 	}
 	
 	public void onDisable()
 	{
 		AntiTimeout.stop();
+		PersistentDataManager.save();
 	}
 }
